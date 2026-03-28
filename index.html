@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nosso Mundo 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ff9ecb,#ffc0cb,#ffe4f0);
+color:#333;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* LOGIN */
+
+#login{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ff9ecb,#ffc0cb);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+#login h1{color:white;}
+
+#login input{
+padding:12px;
+border-radius:10px;
+border:none;
+margin-top:10px;
+}
+
+#login button{
+margin-top:10px;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:white;
+color:#ff4d88;
+font-weight:bold;
+cursor:pointer;
+}
+
+#erro{color:white;}
+
+/* CARTA */
+
+#carta{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9998;
+}
+
+.carta-box{
+background:white;
+color:#333;
+padding:30px;
+border-radius:20px;
+max-width:400px;
+text-align:center;
+animation:fadeIn 1s;
+}
+
+.carta-box button{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+}
+
+/* HEADER */
+
+header{
+padding:30px;
+font-size:2em;
+color:#ff4d88;
+}
+
+/* CONTADOR */
+
+#contador{
+font-size:1.2em;
+}
+
+/* TIMELINE */
+
+.timeline{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:40px;
+padding:20px;
+}
+
+.post{
+width:300px;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+transform:translateY(50px);
+opacity:0;
+transition:all 0.8s ease;
+}
+
+.post img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.texto{
+padding:15px;
+}
+
+.texto h3{
+margin:0;
+color:#ff4d88;
+}
+
+.post.show{
+transform:translateY(0);
+opacity:1;
+}
+
+.post:hover{
+transform:scale(1.05);
+}
+
+/* ANIMAÇÕES */
+
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.8);}
+to{opacity:1;transform:scale(1);}
+}
+
+@keyframes subir{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+.post{width:90%;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div id="login">
+
+<h1>💖 Nosso Mundo 💖</h1>
+<p>Laura & Welington</p>
+
+<input type="password" id="senha" placeholder="Digite a senha">
+<button onclick="entrar()">Entrar</button>
+
+<p id="erro"></p>
+
+</div>
+
+<!-- CARTA -->
+
+<div id="carta">
+
+<div class="carta-box">
+
+<h2>💖 Para você, Laura 💖</h2>
+
+<p>
+Desde o dia 29 de março de 2025, tudo mudou pra melhor.<br><br>
+Você trouxe alegria, paz e um sentimento que eu nunca tinha vivido antes.<br><br>
+Esse site é só uma pequena forma de mostrar o quanto você é importante pra mim.<br><br>
+Eu te amo 💕
+</p>
+
+<button onclick="abrirSite()">Entrar no nosso mundo</button>
+
+</div>
+
+</div>
+
+<!-- MÚSICA -->
+<audio id="musica" src="musica.mp3" loop></audio>
+
+<header>Nosso Mundo 💖</header>
+
+<section>
+<h2>⏳ Nosso tempo juntos</h2>
+<p id="contador"></p>
+</section>
+
+<section>
+
+<h2>📖 Nossa História 💖</h2>
+
+<div class="timeline">
+
+<div class="post">
+<img src="assets/foto1.jpg">
+<div class="texto">
+<h3>A Mulher Que Eu Amo💖</h3>
+<p>Desde o dia em que te conheci, soube que te amaria para sempre.</p>
+</div>
+</div>
+
+<div class="post">
+<img src="assets/foto2.jpg">
+<div class="texto">
+<h3>Um dia inesquecível 🌸</h3>
+<p>nosso primeiro dia dos namorados juntos, um dos dias mais especiais da minha vida.</p>
+</div>
+</div>
+
+<div class="post">
+<img src="assets/foto3.jpg">
+<div class="texto">
+<h3>Nós dois 💕</h3>
+<p>Não importa o lugar… com você tudo fica perfeito.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+/* LOGIN */
+
+function entrar(){
+if(document.getElementById("senha").value==="2903"){
+document.getElementById("login").style.display="none";
+document.getElementById("carta").style.display="flex";
+}else{
+document.getElementById("erro").innerText="Senha incorreta 💔";
+}
+}
+
+/* ABRIR SITE */
+
+function abrirSite(){
+document.getElementById("carta").style.display="none";
+document.getElementById("musica").play();
+}
+
+/* CONTADOR */
+
+function contador(){
+
+const inicio = new Date("2025-03-29T00:00:00");
+
+setInterval(()=>{
+
+const agora = new Date();
+const diff = agora - inicio;
+
+const dias = Math.floor(diff / (1000*60*60*24));
+const horas = Math.floor((diff / (1000*60*60)) % 24);
+const minutos = Math.floor((diff / (1000*60)) % 60);
+const segundos = Math.floor((diff / 1000) % 60);
+
+document.getElementById("contador").innerText =
+`${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤️`;
+
+},1000);
+
+}
+
+contador();
+
+/* ANIMAÇÃO SCROLL */
+
+const posts = document.querySelectorAll(".post");
+
+window.addEventListener("scroll", ()=>{
+
+posts.forEach(post=>{
+const top = post.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+post.classList.add("show");
+}
+});
+
+});
+
+/* CORAÇÕES */
+
+setInterval(()=>{
+
+const coracao = document.createElement("div");
+
+coracao.innerHTML = "💖";
+coracao.style.position = "fixed";
+coracao.style.left = Math.random() * 100 + "vw";
+coracao.style.bottom = "0";
+coracao.style.fontSize = (Math.random() * 20 + 20) + "px";
+coracao.style.animation = "subir 4s linear";
+
+document.body.appendChild(coracao);
+
+setTimeout(()=>{coracao.remove();},4000);
+
+},500);
+
+</script>
+
+</body>
+</html>
